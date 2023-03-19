@@ -9,7 +9,7 @@ $(document).ready(function () {
         center: true,
         dots: true,
         dotsEach: 1,
-        navText:["<div class='nav-btn prev-slide'><img src='images/left-arrow-bg.png' alt=''></div>","<div class='nav-btn next-slide'><img src='images/right-arrow-bg.png' alt=''></div>"],
+        navText: ["<div class='nav-btn prev-slide'><img src='images/left-arrow-bg.png' alt=''></div>", "<div class='nav-btn next-slide'><img src='images/right-arrow-bg.png' alt=''></div>"],
         responsive: {
             0: {
                 stagePadding: 50
@@ -21,18 +21,6 @@ $(document).ready(function () {
                 stagePadding: 250
             }
         },
-        // onInitialized: function () {
-        //     var videos = $('.owl-item.active').find('video');
-        //     videos.each(function () {
-        //         this.play();
-        //     });
-        // },
-        // onTranslated: function () {
-        //     var videos = $('.owl-item.active').find('video');
-        //     videos.each(function () {
-        //         this.play();
-        //     });
-        // },
         onDrag: function () {
             var videos = $('.owl-item.active').find('video');
             videos.each(function () {
@@ -41,19 +29,22 @@ $(document).ready(function () {
         }
     });
 
-
-
-
     /*
     * Play and pause video
     */
-
-
-
-
     var owl = $('.owl-carousel');
     var video = owl.find('video');
 
+    // Pause all video when it is dragged
+    owl.on('drag.owl.carousel', function (event) {
+        console.log('gggggggg')
+        video.each(function () {
+            this.pause();
+        });
+    });
+
+
+    // On Video Changed
     owl.on('changed.owl.carousel', function (event) {
         var currentItem = event.item.index;
         var currentVideo = $(event.target).find('.owl-item').eq(currentItem).find('video');
@@ -67,65 +58,47 @@ $(document).ready(function () {
             }
         });
 
-        // allVideos.each(function() {
-        //     if (!$(this).is(currentVideo)) {
-        //       $(this).prop('disabled', true);
-        //     } else {
-        //       $(this).prop('disabled', false);
-        //     }
-        //   });
-
-
         $(document).on('visibilitychange', function () {
             if (document.visibilityState === 'hidden') {
                 currentVideo.get(0).pause();
                 jQuery('.play-button').removeClass('playing').fadeIn();
+            }
+        });
+
+    });
+
+    // Play and pause video on click video
+    $('.dpc-video-container video').on('click', (e) => {
+        var playButton = $(e.target).siblings('.play-button');
+        if ($(e.target).closest('.owl-item').hasClass('active')) {
+            playPause(e.target, playButton);
+        }
+    });
+
+    // Play and pause video on click of play button
+    $('.play-button').click(function (e) {
+        var video = $(this).siblings('video')[0];
+        var $parent = $(video).closest('.owl-item');
+        if ($parent.hasClass('active')) {
+            if (video.paused) {
+                video.play();
+                $(this).addClass('playing').fadeOut();
             } else {
-                currentVideo.get(0).play();
+                video.pause();
+                $(this).removeClass('playing').fadeIn();
             }
-        });
-
-
-
-
-        // video.on('click', function () {
-        //     var clickedItemIndex = $(this).closest('.owl-item').index();
-        //     if (clickedItemIndex === currentItem) {
-        //         if (currentVideo.get(0).paused) {
-        //             currentVideo.get(0).play();
-        //         } else {
-        //             currentVideo.get(0).pause();
-        //         }
-        //     }
-        // });
-    });
-
-
-
-    owl.on('drag.owl.carousel', function () {
-        video.each(function () {
-            if (!$(this).paused) {
-                $(this).get(0).pause();
-            }
-        });
-    });
-
-
-    // Pause video on click on video after play
-    $('.video-container video').click(function () {
-
-        console.log('ttttttttttttt');
-        var playButton = $(this).siblings('.play-button');
-        if (!this.paused) {
-            this.pause();
-            playButton.removeClass('playing').fadeIn();
-        }
-        else {
-            this.play();
-            playButton.addClass('playing').fadeOut();
         }
     });
-
-
 
 });
+
+
+function playPause(video, playButton) {
+    if (!video.paused) {
+        video.pause();
+        playButton.removeClass('playing').fadeIn();
+    } else {
+        video.play();
+        playButton.addClass('playing').fadeOut();
+    }
+}
