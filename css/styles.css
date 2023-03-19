@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+HK&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Noto Sans HK', sans-serif;
+  background: #fff;
+}
+
+.slider {
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.slider .owl-item.active.center .slider-card {
+  transform: scale(1.15);
+  opacity: 1;
+  /* background: #ff9966;  */
+  /* background: -webkit-linear-gradient(to bottom, #ff5e62, #ff9966); Chrome 10-25, Safari 5.1-6 */
+  /* background: linear-gradient(to bottom, #ff5e62, #ff9966); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #fff;
+}
+
+.slider-card {
+  background: #fff;
+  padding: 0px;
+  margin: 50px 15px 90px 15px;
+  border-radius: 5px;
+  /* box-shadow: 0 15px 45px -20px rgb(0 0 0 / 73%); */
+  transform: scale(0.9);
+  opacity: 0.5;
+  transition: all 0.3s;
+}
+
+/* .slider-card img {
+  border-radius: 5px 5px 0px 0px;
+} */
+.owl-nav .owl-prev {
+  position: absolute;
+  top: calc(50% - 35px);
+  left: 10px;
+  opacity: 1;
+  font-size: 30px !important;
+  z-index: 1;
+}
+
+.owl-nav .owl-next {
+  position: absolute;
+  top: calc(50% - 35px);
+  right: 10px;
+  opacity: 1;
+  font-size: 30px !important;
+  z-index: 1;
+}
+
+.owl-dots {
+  text-align: center;
+}
+
+.owl-dots .owl-dot {
+  height: 10px;
+  width: 10px;
+  border-radius: 10px;
+  background: #ccc !important;
+  margin-left: 3px;
+  margin-right: 3px;
+  outline: none;
+}
+
+.owl-dots .owl-dot.active {
+  background: #f44336 !important;
+}
+
+/* Bootstrap Classes */
+
+.mb-4 {
+  margin-bottom: 1.5rem !important;
+}
+
+.align-items-center {
+  align-items: center !important;
+}
+
+.justify-content-center {
+  justify-content: center !important;
+}
+
+.d-flex {
+  display: flex !important;
+}
+
+.mb-0 {
+  margin-bottom: 0 !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.p-4 {
+  padding: 1.5rem !important;
+}
+
+/*
+.owl-carousel {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.container {
+  width: 1200px;
+} */
+
+.owl-carousel .owl-item video {
+  max-width: 100%;
+  height: auto;
+}
+
+
+/* Video thumb */
+
+
+.video-wrapper {
+  position: relative;
+}
+
+.video-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 3%;
+  width: 90%;
+  color: #fff;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.video-overlay h4 {
+  margin: 0;
+}
+
+.video-overlay p {
+  margin: 2px 0px;
+  font-size: 14px !important;
+}
+
+
+.video-overlay .dpc-slider-description {
+  font-weight: 600;
+}
+
+
+
+/*
+.owl-item .video-wrapper .play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.owl-item .video-wrapper .video-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 20px;
+} */
+
+
+.play-button {
+  background-color: transparent;
+  border: none;
+  width: 80px !important;
+  height: 80px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.play-button:before {
+  content: "\f04b";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 3rem;
+  color: #fff;
+  display: block;
+  margin: 0 auto;
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80
+}
+
+/* .video-wrapper {
+  position: relative;
+  width: 100%;
+} */
+
+.video-wrapper .mute-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background-image: url('mute-icon.png');
+  background-size: cover;
+  cursor: pointer;
+}
+
+/* Max width set and center the div */
+.owl-carousel {
+  margin: 0 auto;
+  /* Centers the carousel horizontally */
+  max-width: 1200px;
+  /* Sets the maximum width of the carousel */
+  width: 100%;
+  /* Makes the carousel responsive */
+}
+
+
+/* Prev Next Arrow */
+.owl-prev,
+.owl-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.owl-prev {
+  left: 0;
+}
+
+.owl-next {
+  right: 0;
+}
+
+video::-webkit-media-controls {
+  /* Your custom CSS styles */
+  color: #fff;
+  font-size: 20px;
+  bottom: 20px;
+}
+
+video::-webkit-media-controls-play-button {
+  /* Your custom CSS styles */
+  background-color: #000;
+}
+
+video::-webkit-media-controls-volume-slider {
+  /* Your custom CSS styles */
+  height: 10px;
+  width: 100px;
+  background-color: #ccc;
+}
+
+.video-container video:hover {
+  cursor: pointer !important;
+  ;
+}
+
+.bg-red {
+  background-color: red;
+
+}
+
+
+.prev-slide img , .next-slide img{
+  width: 40px;
+}
